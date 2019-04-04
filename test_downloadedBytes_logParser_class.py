@@ -13,7 +13,8 @@ class logEntries:
 	def getcustomerID(self, tempLine):
 		return re.search(r"CustomerId:(\d+)", tempLine).group(1)
 	def getblahSize(self, tempLine):
-		return re.search(r"Blah Size:(\d+)", tempLine).group(1)
+		strBtyes=re.search(r"Blah Size:(\d+)", tempLine).group(1)
+		return int(strBtyes)
 
 class filesClass:
 	def __init__(self):
@@ -27,7 +28,7 @@ class filesClass:
 		self.firstLineMatch=0
 
 	def exportOutputFile(self, filename, outputName):
-		filename.to_csv(outputName, sep=',', index=False)	
+		filename.to_csv(outputName, sep=',')	
 
 	def findFirstLine(self,tempText):
 		return re.compile(r"\d\d-\d\d-\d\d\d\d \d\d:\d\d:\d\d").search(tempText)
